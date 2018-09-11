@@ -1,0 +1,18 @@
+body{
+	background-color: green;
+}
+
+#tilla{
+	width: 150px;
+	height: 150px;
+}
+
+audio{
+	display: block;
+}
+
+#trackList{
+	display: block;
+	border: 3px solid black;
+
+}

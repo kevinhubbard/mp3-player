@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Audio Test</title>
+</head>
+<link rel="stylesheet" type="text/css" href="./styles/styles.css">
+<body>
+<img id="tilla" src="./media/images/tilla.jpg">
+<div id="currentDiv"></div>
+<script type="text/javascript">
+	var audio, playBtn, dir, seekBar;
+	var dir = './media/audio/';
+	var audio = new Audio();
+	var playlist = ['choose.mp3','Take It Or Leave It.mp3', 'Swing Set.mp3', 'Logic - We Get High.mp3'];
+
+	function initAudioPlayer(){
+		var play = document.getElementById('playBtn');
+		var skip = document.getElementById('skipBtn');
+		var songList = document.getElementById('trackList');
+		audio.paused = true;
+
+		for (var i = 0; i < playlist.length; i++) {
+			var audioTag = document.createElement('audio');
+			audioTag.controls = true;
+				audioTag.setAttribute('id', playlist[i]);
+			var src = document.createElement('source');
+				src.setAttribute('src', dir + playlist[i]);
+				src.setAttribute('type', 'audio/mp3');
+			audioTag.appendChild(src);
+			songList.appendChild(audioTag);
+			document.body.appendChild(songList);
+			console.log('i cant believe you got here');
+		}
+
+		play.onclick = function(){	
+
+
+/*			if (audio.paused === true){
+				console.log('audio was paused.');
+				audio.play();
+			} else {
+				console.log('audio was playing.');
+				audio.pause();
+			}*/
+		}
+
+		skip.onclick = function(){
+			audio.src = dir + playlist[0];
+			audio.play();
+		}
+	}
+
+
+
+	function playBtn(){
+		var btn = document.createElement('button');
+			btn.setAttribute('id', 'playBtn');
+		var t = document.createTextNode('Play');
+		btn.appendChild(t);
+		document.body.appendChild(btn);
+
+	}
+
+	function skipBtn(){
+		var skipBtn = document.createElement('button');
+			skipBtn.setAttribute('id', 'skipBtn');
+		var e = document.createTextNode('Skip');
+		skipBtn.appendChild(e);
+		document.body.appendChild(skipBtn);
+	}
+
+	function trackList(){
+		var trackList = document.createElement('div');
+			trackList.setAttribute('id', 'trackList');
+		var h = document.createTextNode('Track List');
+		trackList.appendChild(h);
+		document.body.appendChild(trackList);
+
+	}
+
+	window.addEventListener("load", function(){
+		playBtn();
+		skipBtn();
+		trackList();
+		initAudioPlayer();
+
+
+	});
+</script>
+</body>
+</html>
